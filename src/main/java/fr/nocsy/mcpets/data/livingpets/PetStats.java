@@ -331,7 +331,21 @@ public class PetStats {
         boolean levelUp = false;
         while(!nextLevel.equals(currentLevel) && nextLevel.getExpThreshold() <= experience)
         {
-            Debugger.send("§a宠物 §7" + pet.getId() + "§a 正在升级到 §6" + nextLevel.getLevelName());
+            if(nextLevel.getEvolutionId() != null &&
+                    !nextLevel.canEvolve(pet.getOwner(), Pet.getFromId(nextLevel.getEvolutionId())))
+            {
+                Debugger.send("宠物 §6" + pet.getId() + "§7 无法进化为 §a" + nextLevel.getEvolutionId() + "§7，因为玩家已经拥有这个进化");
+                if(experience == nextLevel.getExpThreshold()-1 + event.getExperience()) {
+                    experience = nextLevel.getExpThreshold() - 1;
+                    return false;
+                }
+                else
+                {
+                    experience = nextLevel.getExpThreshold()-1;
+                    break;
+                }
+            }
+            Debugger.send("§a宠物§7" + pet.getId() + "§a 正在升级至 §6" + nextLevel.getLevelName());
             // note that's there's been a levelup
             levelUp = true;
             // Set the current level to the next one
@@ -364,8 +378,7 @@ public class PetStats {
             return null;
 
         return pet.getPetLevels().stream()
-                                    .filter(petLevel -> petLevel.getExpThreshold() > currentLevel.getExpThreshold() &&
-                                                        petLevel.canEvolve(pet.getOwner(), Pet.getFromId(petLevel.getEvolutionId())))
+                                    .filter(petLevel -> petLevel.getExpThreshold() > currentLevel.getExpThreshold())
                                     .findFirst().orElse(currentLevel);
     }
 
