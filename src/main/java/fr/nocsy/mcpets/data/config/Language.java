@@ -131,8 +131,10 @@ public enum Language {
             "\n§7经验:%experience%/%threshold% 经验" +
             "\n%progressbar%"),
 
-    DEBUGGER_JOINING("§a调试器已启用.您现在正在监听它."),
-    DEBUGGER_LEAVE("§a调试器已§7禁用§a.您将不再监听它.");
+    PET_STATS_EVOLUTION_ALREADY_OWNED("§c进化已经拥有了"),
+    PET_STATS_MAX_LEVEL("§7已达到最高等级"),
+    DEBUGGER_JOINING("§a调试已启用. 你现在正在监听他"),
+    DEBUGGER_LEAVE("§a调试§7已禁用§a. 你将不再监听他");
 
     private String message;
 
