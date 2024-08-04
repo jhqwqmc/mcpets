@@ -79,7 +79,7 @@ public enum Language {
 
     REQUIRES_MODELENGINE("§c此插件需要 ModelEngine r2.3.1.似乎未满足此要求."),
 
-    USAGE("§c此命令不存在.\n§7查看 wiki:§nhttps://alexandre-chaussard.gitbook.io/mcpets/tutorials/plugin-features/commands"),
+    USAGE("§c此命令不存在.\n§7查看 wiki:§nhttps://mcpets.gitbook.io/mcpets/tutorials/plugin-features/commands"),
     NO_PERM("§c您无权使用此命令."),
     BLACKLISTED_WORLD("§cMCPets 在此世界中已禁用."),
 
